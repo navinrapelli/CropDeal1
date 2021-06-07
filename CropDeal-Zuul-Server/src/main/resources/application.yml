@@ -1,0 +1,16 @@
+server:
+  port: 8763
+zuul:
+  routes:
+    CropDeal-Admin-Service:
+      url: http://localhost:8701
+    CropDeal-Dealer-Service:
+      url: http://localhost:8702
+    CropDeal-Farmer-Service:
+      url: http://localhost:8703
+    CropDeal-Logging-Service:
+      url: http://localhost:8704
+    CropDeal-Payment-Service:
+      url: http://localhost:8705
+    CropDeal-Subscription-Service:
+      url: http://localhost:8706
