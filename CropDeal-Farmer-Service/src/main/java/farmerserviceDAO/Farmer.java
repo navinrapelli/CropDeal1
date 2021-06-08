@@ -1,4 +1,4 @@
-package adminserviceDAO;
+package farmerserviceDAO;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,8 +13,8 @@ public class Farmer {
 	private String farmer_email;
 	private String farmer_password;
 	private long farmer_contact_no;
-	private Farmer_Address farmer_address;
-	private Farmer_BankDetails farmer_bank_deatils;
+	private Address farmer_address;
+	private BankDetails farmer_bank_deatils;
 
 	
 	public Farmer() {
@@ -23,7 +23,7 @@ public class Farmer {
 	}
 
 	public Farmer(String id, String farmer_name, String farmer_email, String farmer_password, long farmer_contact_no,
-			Farmer_Address farmer_address, Farmer_BankDetails farmer_bank_deatils) {
+			Address farmer_address, BankDetails farmer_bank_deatils) {
 		
 		this.id = id;
 		this.farmer_name = farmer_name;
@@ -32,6 +32,9 @@ public class Farmer {
 		this.farmer_contact_no = farmer_contact_no;
 		this.farmer_address = farmer_address;
 		this.farmer_bank_deatils = farmer_bank_deatils;
+		
+		
+	
 		
 	}
 
@@ -75,19 +78,19 @@ public class Farmer {
 		this.farmer_contact_no = farmer_contact_no;
 	}
 
-	public Farmer_Address getFarmer_address() {
+	public Address getFarmer_address() {
 		return farmer_address;
 	}
 
-	public void setFarmer_address(Farmer_Address farmer_address) {
+	public void setFarmer_address(Address farmer_address) {
 		this.farmer_address = farmer_address;
 	}
 
-	public Farmer_BankDetails getFarmer_bank_deatils() {
+	public BankDetails getFarmer_bank_deatils() {
 		return farmer_bank_deatils;
 	}
 
-	public void setFarmer_bank_deatils(Farmer_BankDetails farmer_bank_deatils) {
+	public void setFarmer_bank_deatils(BankDetails farmer_bank_deatils) {
 		this.farmer_bank_deatils = farmer_bank_deatils;
 	}
 
