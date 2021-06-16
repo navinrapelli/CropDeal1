@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+
+
 import farmerservice.FarmerRepo;
+import farmerservice.MsgConfig;
 import farmerserviceDAO.Farmer;
+import farmerserviceDAO.MsgConfirm;
+import farmerserviceResourceNotFounExcep.ResourceNotFoundException;
 
 
 @Service
+@Component
 public class FarmerService {
 	
 	
@@ -32,7 +39,8 @@ public class FarmerService {
 	
     
 	public Farmer getone(String id) {
-		return repository1.findById(id).get();
+		Farmer farmer=repository1.findById(id).orElseThrow(()->new ResourceNotFoundException("Farmer not exit with id:"+id));
+		return farmer;
 	}
 
 	public Farmer addone(Farmer farmer) {
@@ -50,11 +58,38 @@ public class FarmerService {
 		
 	}
 
-
-
-
-
+	/*public Farmer getFarmerr()
+	{  
+		String n="ashish28myakal@gmail.com";
+		
+		Farmer far=repository1.findByFarmeremail(n);
+			
+		System.out.println(far);
+		return far;
+	}*/
 	
+	
+	
+	  MsgConfirm con=new MsgConfirm();
+
+		@RabbitListener(queues = MsgConfig.QUEUE)
+		public void consumeMessageFromQ(MsgConfirm con)
+		{    
+			MsgConfirm farm=con;
+			
+			Farmer far=repository1.findById(farm.getFarmer_id()).get();
+			
+			far.setMessages(farm);
+			       
+			repository1.save(far);
+		
+			
+			System.out.println(con);		
+			
+		}
+	
+
+		
 
 
 

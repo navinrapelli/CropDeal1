@@ -13,12 +13,13 @@ public class Crops {
 	private long selling_price;
 	private long total;
 	private String uplodedby;
+	private String sellername;
 	private Address address;
 	public Crops() {
 		
 	}
 	public Crops(String id, String crop_name, int quantity, long selling_price, long total, String uplodedby,
-			Address address) {
+			String sellername,Address address) {
 
 		this.id = id;
 		this.crop_name = crop_name;
@@ -27,6 +28,7 @@ public class Crops {
 		this.total = total;
 		this.uplodedby = uplodedby;
 		this.address = address;
+		this.sellername=sellername;
 	}
 	public String getId() {
 		return id;
@@ -61,9 +63,18 @@ public class Crops {
 	public String getUplodedby() {
 		return uplodedby;
 	}
+	
+
 	public void setUplodedby(String uplodedby) {
 		this.uplodedby = uplodedby;
 	}
+	public String getSellername() {
+		return sellername;
+	}
+	public void setSellername(String sellername) {
+		this.sellername = sellername;
+	}
+	
 	public Address getLocation() {
 		return address;
 	}

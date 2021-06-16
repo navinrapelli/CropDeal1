@@ -29,8 +29,8 @@ public class DealerService {
 	
 	
 
-	public Optional<Dealer> getone(String id) {
-		return repository1.findById(id);
+	public Dealer getone(String id) {
+		return repository1.findById(id).get();
 	}
 
 	public void addone(Dealer dealer) {

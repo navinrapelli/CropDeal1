@@ -40,8 +40,9 @@ public class CropService {
 	public Crops addone(Crops crop,String farmerid) {
 		           
 		 Farmer far =repo1.getonefarmer(farmerid);
-		 crop.setUplodedby(far.getFarmer_name());
-		crop.setLocation(far.getFarmer_address());
+		 crop.setUplodedby(far.getId());
+		crop.setLocation(far.getFarmeraddress());
+		crop.setSellername(far.getFarmername());
 		return repository1.save(crop);
 		
 	}

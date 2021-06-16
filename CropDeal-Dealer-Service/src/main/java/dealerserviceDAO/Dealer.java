@@ -10,28 +10,31 @@ public class Dealer {
 	@Id
 	String id;
 	
-	String dealer_name;
-	String dealer_email;
-	String dealer_password;
-	long dealer_contact_no;
-	//SubCrop dealer_sub_crop_deatils;
-	BankDetails dealer_bank_deatils;
+	String dealername;
+	String dealeremail;
+	String dealerpassword;
+	long dealercontactno;
+	private String Role;
+    SubCrop dealersubcropdeatils;
+	BankDetails dealerbankdeatils;
 	//Invoice dealer_invoice;
 
 	
 	public Dealer() {
 	
-		// TODO Auto-generated constructor stub
+	
 	}
-	public Dealer(String id, String dealer_name, String dealer_email, String dealer_password, long dealer_contact_no,
-			BankDetails dealer_bank_deatils) {
-		
+	public Dealer(String id, String dealername, String dealeremail, String dealerpassword, long dealercontactno,
+			String role, SubCrop dealersubcropdeatils, BankDetails dealerbankdeatils) {
+		super();
 		this.id = id;
-		this.dealer_name = dealer_name;
-		this.dealer_email = dealer_email;
-		this.dealer_password = dealer_password;
-		this.dealer_contact_no = dealer_contact_no;
-		this.dealer_bank_deatils = dealer_bank_deatils;
+		this.dealername = dealername;
+		this.dealeremail = dealeremail;
+		this.dealerpassword = dealerpassword;
+		this.dealercontactno = dealercontactno;
+		Role = role;
+		this.dealersubcropdeatils = dealersubcropdeatils;
+		this.dealerbankdeatils = dealerbankdeatils;
 	}
 	public String getId() {
 		return id;
@@ -39,44 +42,54 @@ public class Dealer {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDealer_name() {
-		return dealer_name;
+	public String getDealername() {
+		return dealername;
 	}
-	public void setDealer_name(String dealer_name) {
-		this.dealer_name = dealer_name;
+	public void setDealername(String dealername) {
+		this.dealername = dealername;
 	}
-	public String getDealer_email() {
-		return dealer_email;
+	public String getDealeremail() {
+		return dealeremail;
 	}
-	public void setDealer_email(String dealer_email) {
-		this.dealer_email = dealer_email;
+	public void setDealeremail(String dealeremail) {
+		this.dealeremail = dealeremail;
 	}
-	public String getDealer_password() {
-		return dealer_password;
+	public String getDealerpassword() {
+		return dealerpassword;
 	}
-	public void setDealer_password(String dealer_password) {
-		this.dealer_password = dealer_password;
+	public void setDealerpassword(String dealerpassword) {
+		this.dealerpassword = dealerpassword;
 	}
-	public long getDealer_contact_no() {
-		return dealer_contact_no;
+	public long getDealercontactno() {
+		return dealercontactno;
 	}
-	public void setDealer_contact_no(long dealer_contact_no) {
-		this.dealer_contact_no = dealer_contact_no;
+	public void setDealercontactno(long dealercontactno) {
+		this.dealercontactno = dealercontactno;
 	}
-	public BankDetails getDealer_bank_deatils() {
-		return dealer_bank_deatils;
+	public String getRole() {
+		return Role;
 	}
-	public void setDealer_bank_deatils(BankDetails dealer_bank_deatils) {
-		this.dealer_bank_deatils = dealer_bank_deatils;
+	public void setRole(String role) {
+		Role = role;
+	}
+	public SubCrop getDealersubcropdeatils() {
+		return dealersubcropdeatils;
+	}
+	public void setDealersubcropdeatils(SubCrop dealersubcropdeatils) {
+		this.dealersubcropdeatils = dealersubcropdeatils;
+	}
+	public BankDetails getDealerbankdeatils() {
+		return dealerbankdeatils;
+	}
+	public void setDealerbankdeatils(BankDetails dealerbankdeatils) {
+		this.dealerbankdeatils = dealerbankdeatils;
 	}
 	@Override
 	public String toString() {
-		return "Dealer [id=" + id + ", dealer_name=" + dealer_name + ", dealer_email=" + dealer_email
-				+ ", dealer_password=" + dealer_password + ", dealer_contact_no=" + dealer_contact_no
-				+ ", dealer_bank_deatils=" + dealer_bank_deatils + "]";
+		return "Dealer [id=" + id + ", dealername=" + dealername + ", dealeremail=" + dealeremail + ", dealerpassword="
+				+ dealerpassword + ", dealercontactno=" + dealercontactno + ", Role=" + Role + ", dealersubcropdeatils="
+				+ dealersubcropdeatils + ", dealerbankdeatils=" + dealerbankdeatils + "]";
 	}
-
-
 	
 
 	
