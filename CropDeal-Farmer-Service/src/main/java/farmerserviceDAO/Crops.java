@@ -1,5 +1,7 @@
 package farmerserviceDAO;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,6 +10,8 @@ public class Crops {
 	
 	@Id
 	private String id;
+	
+
 	private String crop_name;
 	private int quantity;
 	private long selling_price;

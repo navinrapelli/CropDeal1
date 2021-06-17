@@ -179,9 +179,11 @@ public class AdminController {
 		      )
 	
 	@GetMapping("/dealer")
-	public List<Dealer> getdealers()
+	public Object getdealers()
 	{
-		return service2.Getall();		
+		Object deal=restTemplate.getForObject("http://CropDeal-Dealer-Service/dealer/getall/",Object.class) ;
+		return (deal);
+	
 		
 	}
 	

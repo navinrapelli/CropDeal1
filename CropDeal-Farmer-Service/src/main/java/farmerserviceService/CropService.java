@@ -33,8 +33,8 @@ public class CropService {
 	Farmer farmer=new Farmer();
 	
 
-	public Optional<Crops> getone(String id) {
-		return repository1.findById(id);
+	public List<Crops> getone(String farmid) {
+		return repository1.findByUplodedby(farmid);
 	}
 
 	public Crops addone(Crops crop,String farmerid) {
@@ -48,7 +48,8 @@ public class CropService {
 	}
 
 	public void update(String id, Crops crop) {
-		repository1.save(crop);
+	
+            repository1.save(crop);
 		
 	}
 

@@ -27,24 +27,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	    return NoOpPasswordEncoder.getInstance();
 	  }
 	
-	/*@Bean
+	@Bean
 	public DaoAuthenticationProvider authenticationProvider()
 	{
 		DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setUserDetailsService(this.getUserDetailsService());
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 		return daoAuthenticationProvider;
-	}*/
+	}
 
-	/*@Override
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
-	}*/
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		//http.csrf().disable().authorizeRequests().antMatchers("/farmer/**").authenticated()   
-		//.and().formLogin();
+		http.csrf().disable().authorizeRequests().antMatchers("/farmer/").authenticated()  
+		.and().formLogin();
 	}
 	
 	

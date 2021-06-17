@@ -42,12 +42,12 @@ public class DealerController {
 	
 
 	
-	/*@GetMapping("/dealer")
+	@GetMapping("/getall")
 	public List<Dealer> getdealers()
 	{
 		return service2.Getall();		
 		
-	}*/
+	}
 	
 	
 	@ApiOperation(value="Dealer can create his profile or register himself ",

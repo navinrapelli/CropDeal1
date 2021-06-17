@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.paytm.pg.merchant.PaytmChecksum;
 
-
+import paymentserviceDAO.Dealer;
+import paymentserviceDAO.Farmer;
 import paymentserviceDAO.PaytmPay;
 
 @Controller
@@ -30,8 +32,21 @@ public class PaymentController {
 	@Autowired
 	private Environment env;
 	
-	@GetMapping("/")
-	public String home() {
+	@Autowired
+	RestTemplate restTemplate;
+	
+	@GetMapping("/{farmid}/{dealid}")
+	public String home(@PathVariable("farmid")String id1,@PathVariable("dealid") String id2) {
+		
+		Farmer far1=restTemplate.getForObject("http://CropDeal-Farmer-Service/farmer/"+id1, Farmer.class) ;     
+		String name=far1.getFarmername();	
+		System.out.println(name);
+		
+		Dealer deal=restTemplate.getForObject("http://CropDeal-Dealer-Service/dealer/"+id2, Dealer.class) ;     
+		String name1=deal.getDealername()	;
+		System.out.println(name1);
+		
+		
 		
 		
 		

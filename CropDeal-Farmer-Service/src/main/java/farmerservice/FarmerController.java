@@ -4,6 +4,8 @@ package farmerservice;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.sun.scenario.effect.Crop;
 
 import farmerserviceDAO.Crops;
 import farmerserviceDAO.Farmer;
@@ -121,7 +125,7 @@ public class FarmerController {
 		      notes="Using this api farmer add crops information"
 		      )	
 	@PostMapping("/crop/add/{farmerid}")
-	public String addcrop(@RequestBody Crops crop ,@PathVariable("farmerid") String farmerid )
+	public String addcrop(@Valid @RequestBody Crops crop ,@PathVariable("farmerid") String farmerid )
 	{     
 		
 		 service3.addone(crop, farmerid);
@@ -133,10 +137,10 @@ public class FarmerController {
 	@ApiOperation(value="Farmer can view his crop details",
 		      notes="Using this api farmer can view his crop deatils"
 		      )	
-@GetMapping("/crop/{id}")
-public Optional<Crops> getonecrop(@PathVariable("id")String id)
+@GetMapping("/crop/{farmid}")
+public List<Crops> getonecrop(@PathVariable("farmid")String farmid)
 {
-	return service3.getone(id);		
+         return service3.getone(farmid);
 	
 }
 
@@ -146,9 +150,9 @@ public Optional<Crops> getonecrop(@PathVariable("id")String id)
 @PutMapping("/crop/update/{id}")
 public Crops Updatecrop(@PathVariable("id")String id ,@RequestBody Crops crop)
 {
-	service3.update(id, crop);
-	return crop;		
+	 service3.update(id,crop);
 	
+	return crop;
 }
 
 	
