@@ -101,6 +101,14 @@ public class DealerController {
     	  
     	  
       }
+	
+	@GetMapping("/crop/{id}")
+	public Crops getcrops( @PathVariable("id") String id )
+	{
+		return service3.getone(id);
+		
+		
+	}
 	   
 	   @Autowired
 		private RabbitTemplate template;
@@ -127,12 +135,15 @@ public class DealerController {
 			con.setDealer_id(dealer.getId());
 			con.setDealer_name(dealer.getDealername());
 			con.setDealer_No(dealer.getDealercontactno());
-			con.setMessage("The dealer is subscribed to this crop "+crop.getCrop_name());
+			con.setMessage("The dealer is subscribed to the crop "+crop.getCrop_name());
 			   //Farmer farmer=resTemplate.getForObject("http://CropDeal-Dealer-Service/farmer/update/"+cropid,Farmer.class);
 			   
 			  System.out.println(con);
+			  System.out.println(sub);
 			  
-			template.convertAndSend(MsgConfig.EXCHANE,MsgConfig.ROUTING_KEY, con);
+			  System.out.println("navin");
+			  
+			template.convertAndSend(MsgConfig.EXCHANE,MsgConfig.ROUTING_KEY,con);
 			
 			return "SUCESS";
 		

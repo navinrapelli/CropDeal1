@@ -2,7 +2,7 @@ package farmerserviceDAO;
 
 import java.io.Serializable;
 
-public class MsgConfirm implements Serializable{
+public class MsgConfirm{
 	
    private  String farmer_id;
    private String dealer_id;

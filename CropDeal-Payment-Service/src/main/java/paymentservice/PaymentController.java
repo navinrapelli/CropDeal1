@@ -35,16 +35,16 @@ public class PaymentController {
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@GetMapping("/{farmid}/{dealid}")
+	@GetMapping("/pay/{farmid}/{dealid}")
 	public String home(@PathVariable("farmid")String id1,@PathVariable("dealid") String id2) {
 		
 		Farmer far1=restTemplate.getForObject("http://CropDeal-Farmer-Service/farmer/"+id1, Farmer.class) ;     
-		String name=far1.getFarmername();	
-		System.out.println(name);
+		String farmer=far1.getFarmername();	
+		System.out.println(farmer);
 		
 		Dealer deal=restTemplate.getForObject("http://CropDeal-Dealer-Service/dealer/"+id2, Dealer.class) ;     
-		String name1=deal.getDealername()	;
-		System.out.println(name1);
+		String dealer=deal.getDealername()	;
+		System.out.println(dealer);
 		
 		
 		

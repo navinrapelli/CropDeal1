@@ -27,9 +27,9 @@ public class CropService {
 	}
 
 	
-	public Crops getone( String  cropid )
+	public Crops getone( String  id )
 	{
-		return repository1.findById(cropid).get();
+		return repository1.findById(id).get();
 		
 		
 	}

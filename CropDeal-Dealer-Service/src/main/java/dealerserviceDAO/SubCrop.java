@@ -11,7 +11,7 @@ public class SubCrop {
 	
 	
 	public SubCrop(String crop_name, String farmer_name) {
-		super();
+	
 		this.crop_name = crop_name;
 		this.farmer_name = farmer_name;
 	}

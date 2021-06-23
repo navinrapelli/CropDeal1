@@ -42,7 +42,8 @@ public class AdminController {
 	
      @Autowired
 	RestTemplate restTemplate;
-	@GetMapping("/admin1/{id}")
+	
+     /*@GetMapping("/admin1/{id}")
 	public  List<Farmer> demo1(@PathVariable("id")String id)
 	{	
 		Farmer far1=restTemplate.getForObject("http://CropDeal-Farmer-Service/farmer/"+id, Farmer.class) ;
@@ -50,7 +51,7 @@ public class AdminController {
 				return Arrays.asList(far1);		
 		
 	}	
-	/*@HystrixCommand(fallbackMethod = "fallback")
+	@HystrixCommand(fallbackMethod = "fallback")
 	private String fallback()
 	{
 		return "request fails";
@@ -120,6 +121,7 @@ public class AdminController {
 	@ApiOperation(value="Admin can see the list of all farmers from databse ",
 		      notes="Admin get the list of the all Farmers with all the information about farmer"
 			      )
+	@HystrixCommand(fallbackMethod = "getfamrersfallback")
 	@GetMapping("/farmer")
 	public  Object getfarmers()
 	{
@@ -129,6 +131,13 @@ public class AdminController {
 		//return service1.Getall();		
 		
 			return (far1);
+	}
+	
+	public String getfamrersfallback()
+	{
+		return "Farmer Service is under maintaince";
+		
+		
 	}
 	
 		
@@ -177,7 +186,7 @@ public class AdminController {
 	@ApiOperation(value="Find all the Dealers inside database",
 		      notes="Admin get the list of the all Dealers "
 		      )
-	
+	@HystrixCommand(fallbackMethod = "getdealerfallback")
 	@GetMapping("/dealer")
 	public Object getdealers()
 	{
@@ -187,6 +196,12 @@ public class AdminController {
 		
 	}
 	
+	public String getdealerfallback()
+	{
+		
+		return "Dealer service is undermaintaince";
+		
+	}
 		
 	/*@GetMapping("admin/dealer/{id}")
 	public Optional<Dealer> getonedealer(@PathVariable("id")String id)
